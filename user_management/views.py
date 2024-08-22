@@ -6,6 +6,7 @@ from django.core.mail import send_mail
 from rest_framework.views import APIView
 from django.core.cache import cache
 from rest_framework import permissions, status
+from rest_framework_simplejwt.tokens import RefreshToken 
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.views import TokenRefreshView
@@ -77,7 +78,7 @@ class LoginApi(APIView):
 			
 			user_management = TemporaryUserManagement(credential)
 			user_id, otp = user_management.create_temp_user()
-			
+
 			cache.set(f"otp_{user_id}", otp, timeout=180)
 			cache.set(f"credential_{user_id}", credential, timeout=180)
 
@@ -119,3 +120,15 @@ class GetLoginOtp(APIView):
 			return Response(data=data, status=status.HTTP_200_OK)
 		else:
 			return Response({"error": "Invalid OTP"}, status=status.HTTP_400_BAD_REQUEST)
+		
+
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request):
+        try:
+            refresh_token = request.data['refresh_token']
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+            return Response(status=status.HTTP_205_RESET_CONTENT)
+        except Exception as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
