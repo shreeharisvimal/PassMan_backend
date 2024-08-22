@@ -28,5 +28,5 @@ urlpatterns = [
     
     # Apps api
     path('user_authentication/', include('user_management.urls')),
-    # path('password/', include('pass_management.urls')),
+    path('password/', include('pass_management.urls')),
 ]
