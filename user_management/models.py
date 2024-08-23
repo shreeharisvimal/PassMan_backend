@@ -41,7 +41,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         refresh = RefreshToken.for_user(self)
         refresh['user_cred'] = str(self.credential)
         refresh['user_id'] = str(self.id)
-        refresh['isAdmin'] = str(self.is_superuser)
 
         return {
             'RefreshToken': str(refresh),
