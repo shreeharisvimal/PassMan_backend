@@ -94,8 +94,8 @@ WSGI_APPLICATION = 'PassMan.wsgi.application'
 DATABASES = {
    'default': {
         'ENGINE': os.getenv('ENGINE'),
-        'NAME':os.getenv('NAME'),
-        'USER': os.getenv('USER'),
+        'NAME':os.getenv('databaseNAME'),
+        'USER': os.getenv('databaseUSER'),
         'PASSWORD': os.getenv('PASSWORD'),
     }
 }
@@ -243,4 +243,5 @@ EMAIL_PORT=os.getenv('EMAIL_PORT')
 EMAIL_HOST_USER=os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD=os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True    
+
 
