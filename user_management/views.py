@@ -39,10 +39,7 @@ class TemporaryUserManagement:
 		return uniquetime
 	
 	def __generate_otp(self):
-		characters = string.ascii_letters + string.digits
-		otp_list = random.choices(characters, k=6)
-		random.shuffle(otp_list)
-		otp = ''.join(otp_list)
+		otp = random.randint(100000, 999999)
 		return otp
 	
 	def create_temp_user(self):
@@ -98,11 +95,12 @@ class GetLoginOtp(APIView):
 
 		if not otp or not user_id:
 			return Response({"error": "OTP and user_id are required"}, status=status.HTTP_400_BAD_REQUEST)
-		
 		cache_key = f"otp_{user_id}"
 		otp_stored = cache.get(cache_key)
+		print(otp_stored)
+		print(otp)
 
-		if otp_stored and otp_stored == otp:
+		if int(otp_stored) and int(otp_stored) == int(otp):
 			cache.delete(cache_key)
 			credential = cache.get(f'credential_{user_id}')
 
@@ -118,6 +116,8 @@ class GetLoginOtp(APIView):
 			}
 			
 			return Response(data=data, status=status.HTTP_200_OK)
+		elif otp_stored is None:
+			return Response({"error": "Invalid OTP"}, status=status.HTTP_403_FORBIDDEN)
 		else:
 			return Response({"error": "Invalid OTP"}, status=status.HTTP_400_BAD_REQUEST)
 		
