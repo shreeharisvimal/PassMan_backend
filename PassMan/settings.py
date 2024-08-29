@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://passman.shreeharisvimal.tech/', 'https://www.passman.shreeharisvimal.tech/']
 
 
 # Application definition
@@ -165,11 +165,14 @@ CORS_ORGIN_ALLOW_ALL = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    'https://www.passman.shreeharisvimal.tech/',
+    'https://passman.shreeharisvimal.tech/'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-	'http://localhost:3000'
-	
+	'http://localhost:3000',
+	'https://www.passman.shreeharisvimal.tech/',
+	'https://passman.shreeharisvimal.tech/'	
 ]
 
 
