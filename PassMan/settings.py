@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://passman.backend.shreeharisvimal.tech/', 'https://www.passman.backend.shreeharisvimal.tech/']
+ALLOWED_HOSTS = ['passman.backend.shreeharisvimal.tech']
 
 
 # Application definition
