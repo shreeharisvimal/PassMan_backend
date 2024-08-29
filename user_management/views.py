@@ -69,7 +69,6 @@ class LoginApi(APIView):
 	def post(self, request):
 		try:
 			credential = request.data.get('credential')
-			print(credential)
 			if not credential:
 				return Response({"error": "Credential is required"}, status=status.HTTP_400_BAD_REQUEST)
 			
@@ -82,7 +81,7 @@ class LoginApi(APIView):
 			return Response(data={"user_id": user_id}, status=status.HTTP_201_CREATED)
 		
 		except Exception as e:
-			return Response({"error": "An error occurred"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+			return Response({"error": "An error occurred {e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 		
 
 
