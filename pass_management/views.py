@@ -7,6 +7,7 @@ from .serializers import PasswordSerializer
 from .models import Password
 
 class PasswordCreateApi(APIView):
+	
 	permission_classes = [IsAuthenticated]
 
 	def post(self, request):
