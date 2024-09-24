@@ -165,14 +165,14 @@ CORS_ORGIN_ALLOW_ALL = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    'https://www.passman.shreeharisvimal.tech',
-    'https://passman.shreeharisvimal.tech'
+    'https://www.mypassman.shreeharisvimal.tech',
+    'https://mypassman.shreeharisvimal.tech'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
 	'http://localhost:3000',
-	'https://www.passman.shreeharisvimal.tech',
-	'https://passman.shreeharisvimal.tech'	
+	'https://www.mypassman.shreeharisvimal.tech',
+	'https://mypassman.shreeharisvimal.tech'	
 ]
 
 
